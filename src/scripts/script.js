@@ -1,6 +1,17 @@
 const addBookBtn = document.querySelector(".addBook")
 let count = 0
 
+
+let books = []
+
+function Book(title, author, pageCount, read){
+    this.title = title
+    this.author = author
+    this.pageCount = pageCount
+    this.read = read
+}
+
+
 function addBookPopUp(){
 
 
@@ -88,8 +99,25 @@ AddBookButton.className = 'addBook'
 AddBookButton.textContent = 'Add Book'
 buttonsContainer.appendChild(AddBookButton)
 
+AddBookButton.addEventListener("click", ()=>{
+    function addBookToLibrary(){
+    let inputedBookTitle = titleInput.textContent
+    let arrTitle = titleInput.value
+    let inputedAuthor = authorInput.value
+    let inputedPageCount = pageCountInput.value
+
+    arrTitle = new Book(inputedBookTitle,inputedAuthor,inputedPageCount,true)
+    books.push(arrTitle)
+    console.log(books)
+    return arrTitle
 }
 
+addBookToLibrary()
+titleContainerDiv.remove()
+count = 0
+})
+
+}
 
 addBookBtn.addEventListener("click",()=>{
     count += 1
@@ -101,16 +129,19 @@ addBookBtn.addEventListener("click",()=>{
 
 
 
-let books = []
+// function addBookToLibrary(title, author, pageCount, read){
+//     let inputedBookTitle = titleInput.textContent
+//     let arrTitle = titleInput.value
+//     let inputedAuthor = authorInput.value
+//     let inputedPageCount = pageCount.value
+//     let inputedReadStatus = read.value
 
-function Book(title, author, pageCount, read){
-    this.title = title
-    this.author = author
-    this.pageCount = pageCount
-    this.read = read
-}
+//     arrTitle = new Book(inputedBookTitle,inputedAuthor,inputedPageCount,inputedReadStatus)
+//     books.push(arrTitle)
+//     console.log(books)
 
-function addBookToLibrary(title, author, pageCount, read){
-    
-}
+//     return arrTitle
+// }
+
+
 

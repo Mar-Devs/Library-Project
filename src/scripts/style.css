@@ -78,6 +78,7 @@ body{
     align-items: flex-end
 }
 
+
 .buttonsContainer button{
     height: 1.8rem;
     width: 6.3rem;
@@ -88,12 +89,17 @@ body{
     color: var(--pink-text);
     font-style: italic;
     font-family: var(--Instrument-Serif), var(--Roboto);
+    margin: 5px;
+}
+
+.buttonsContainer button:active{
+    background-color: var(--background-pink);
+    transform: translate(0,2px);
+    box-shadow: 0px 1px 1px pink;
 }
 
 .buttonsContainer button:hover{
     background-color: var(--background-pink);
-    transform: translate(0,2px);
-    box-shadow: 0px 1px 1px pink;
 }
 
 .checkBoxContainer p{
@@ -125,5 +131,44 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin: 10px;
+}
+
+.addBook{
+    height: 50px;
+    width: 150px;
+    color: var(--white-text);
+    border-style: none;
+    background-color: var(--dark-background-pink);
+    font-weight: 600;
+    font-family: var(--Instrument-Serif), var(--Roboto);
+    border-radius: 10px;
+}
+
+.addBook:active{
+    transform: translateY(2px);
+    background-color: var(--background-btn);
+}
+
+.addBook:hover{
+    background-color: var(--background-btn);
+}
+
+.addBook:disabled{
+    background-color: rgb(159, 156, 156);
+    color: var(--white-text);
+}
+
+.addBook:disabled:active{
+    transform: translateY(0px);
+}
+
+.bookDisplay{
+    height: 150px;
+    width: 150px;
+    background-color: var(--dark-background-pink);
+    padding: 15px;
+    margin: 5px;
+    border-radius: 10px;
 }
 
