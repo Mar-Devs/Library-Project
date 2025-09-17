@@ -164,15 +164,6 @@ body{
     background-color: var(--background-btn);
 }
 
-.addBook:disabled{
-    background-color: rgb(159, 156, 156);
-    color: var(--white-text);
-}
-
-.addBook:disabled:active{
-    transform: translateY(0px);
-}
-
 
 
 .bookDisplay{
@@ -224,11 +215,19 @@ body{
     font-family: var(--Instrument-Serif), var(--Roboto);
 }
 
-.defaultTitle{
-    font-weight: 600;;
+.card button:hover{
+    opacity: 0.8;
 }
 
-.cardTitle, .cardAuthor, .cardPageCount{
+.card button:active{
+    transform: translate(0,2px);
+}
+
+.defaultTitle{
+    font-weight: 600;
+}
+
+.cardTitle, .cardAuthor, .cardPageCount, .cardReadCount{
     display: flex;
     gap: 10px;
 }

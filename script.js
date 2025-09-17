@@ -13,13 +13,6 @@ function Book(title, author, pageCount, read, uuid){
     this.uuid = uuid
 }
 
-function connection(){
-    for(let i = 0; i < books.length ;i++){
-        console.log(books[i])
-    }
-}
-
-
 
 function addBookPopUp(){
 
@@ -91,9 +84,6 @@ checkBoxInput.setAttribute('name','readOrNot')
 checkBoxInput.setAttribute('id','readOrNot')
 checkBoxContainer.appendChild(checkBoxInput)
 
-const checkBoxResult = document.querySelector(".checkBoxInputVar").value
-
-
 const buttonsContainer = document.createElement("div")
 buttonsContainer.className = 'buttonsContainer'
 bottomContainer.appendChild(buttonsContainer)
@@ -119,9 +109,19 @@ AddBookButton.addEventListener("click", ()=>{
     let arrTitle = titleInput.value
     let inputedAuthor = authorInput.value
     let inputedPageCount = pageCountInput.value
+    let inputedReadStatus = false
+    if(checkBoxInput.checked){
+
+        inputedReadStatus = true
+        console.log(inputedReadStatus)
+    }
+    else{
+        inputedPageCount = false
+        console.log(inputedReadStatus)
+    }
     let uuid = self.crypto.randomUUID()
 
-    arrTitle = new Book(inputedBookTitle,inputedAuthor,inputedPageCount,checkBoxResult,uuid)
+    arrTitle = new Book(inputedBookTitle,inputedAuthor,inputedPageCount,inputedReadStatus,uuid)
     books.push(arrTitle)
     for(let i = 0; i < books.length; i++){
         console.log(books[i].title)
@@ -182,7 +182,7 @@ AddBookButton.addEventListener("click", ()=>{
 
 
     const cardRead = document.createElement("div")
-    cardRead.className = 'cardPageCount'
+    cardRead.className = 'cardReadCount'
     card.appendChild(cardRead)
 
     const defaultReadCount = document.createElement("p")
@@ -190,14 +190,28 @@ AddBookButton.addEventListener("click", ()=>{
     defaultReadCount.textContent = 'Read:'
     cardRead.appendChild(defaultReadCount)
 
+    const inputedReadCount = document.createElement("p")
+    for(let i = 0; i < books.length; i++){
+        books[i].read
+        if(books[i].read === true){
+            inputedReadCount.textContent = 'Yes'
+        }
+        else{
+            inputedReadCount.textContent = 'No'
+        }
+    } 
+    cardRead.appendChild(inputedReadCount)
+
+
     const deletBtn = document.createElement("button")
     deletBtn.textContent = 'Delete'
     card.appendChild(deletBtn)
 
     deletBtn.addEventListener("click",()=>{
-        for(let i = 0; i < books.length; i++){
-            books.splice([i],1)
-    }
+        for(let i = 0; i< books.length; i++){
+        books.splice([i],1)
+        }
+
     console.log(books)
     card.remove()
     })
@@ -211,6 +225,7 @@ AddBookButton.addEventListener("click", ()=>{
 addBookToLibrary()
 titleContainerDiv.remove()
 count = 0
+console.log(books)
 })
 
 }
