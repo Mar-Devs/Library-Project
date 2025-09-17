@@ -224,8 +224,11 @@ body{
     font-family: var(--Instrument-Serif), var(--Roboto);
 }
 
-/* 
-.titleContainer{
-    z-index: 2;
-    transform: translate(0,-300px);
-} */
+.defaultTitle{
+    font-weight: 600;;
+}
+
+.cardTitle, .cardAuthor, .cardPageCount{
+    display: flex;
+    gap: 10px;
+}
