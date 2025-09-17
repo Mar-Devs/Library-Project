@@ -22,23 +22,12 @@
     url("src\assests\fonts\Roboto-Italic-VariableFont_wdth,wght.ttf") format("tff");
 }
 
-html{
-    height: auto;
-    margin: 0;
-    padding: 0;
-}
-
 body{
-    height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: 10px auto;
     justify-content: center;
     align-items: center;
-    font-size: 10px;
-    overflow: auto;
-    padding: 0;
-    margin: 0;
-
 }
 
 .addBookContainer{
