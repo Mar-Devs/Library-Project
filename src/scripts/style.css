@@ -22,6 +22,12 @@
     url("src\assests\fonts\Roboto-Italic-VariableFont_wdth,wght.ttf") format("tff");
 }
 
+html{
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
 body{
     height: 100vh;
     display: flex;
@@ -29,6 +35,10 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 10px;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+
 }
 
 .addBookContainer{
@@ -163,12 +173,59 @@ body{
     transform: translateY(0px);
 }
 
+
+
 .bookDisplay{
-    height: 150px;
-    width: 150px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    height: 80vh;
+}
+
+@media (max-width: 1200px) and (min-width: 751px){
+    .bookDisplay{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 750px){
+    .bookDisplay{
+        grid-template-columns: 1fr;
+    }
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--white-text);
+    font-family: var(--Instrument-Serif), var(--Roboto);
+    font-size: 1rem;
+    padding: 10px;
+    height: 300px;
+    width: 300px;
+
     background-color: var(--dark-background-pink);
     padding: 15px;
     margin: 5px;
     border-radius: 10px;
+    justify-content: center;
 }
 
+.card button{
+    height: 25px;
+    width: 100px;
+    align-self: flex-end;
+    border-radius: 10px;
+    border-style: none;
+    background-color: var(--background-btn);
+    color: var(--white-text);
+    font-weight: 500;
+    font-family: var(--Instrument-Serif), var(--Roboto);
+}
+
+/* 
+.titleContainer{
+    z-index: 2;
+    transform: translate(0,-300px);
+} */

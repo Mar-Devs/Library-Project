@@ -1,25 +1,30 @@
 const addBookBtn = document.querySelector(".addBook")
+const body = document.querySelector("body")
 let count = 0
 
 
 let books = []
 
-function Book(title, author, pageCount, read){
+function Book(title, author, pageCount, read, uuid){
     this.title = title
     this.author = author
     this.pageCount = pageCount
     this.read = read
+    this.uuid = uuid
 }
+
+
 
 
 function addBookPopUp(){
 
 
+const mainCardPopUpContainer = document.querySelector(".mainCardPopUpContainer")
+
+
 const titleContainerDiv = document.createElement("div")
 titleContainerDiv.className = 'titleContainer'
-
-const body = document.querySelector("body")
-body.appendChild(titleContainerDiv)
+mainCardPopUpContainer.appendChild(titleContainerDiv)
 
 const title = document.createElement("div")
 title.className = 'title'
@@ -75,10 +80,14 @@ checkBoxContainerP.textContent = 'Have you read this book?'
 checkBoxContainer.appendChild(checkBoxContainerP)
 
 const checkBoxInput = document.createElement("input")
+checkBoxInput.className = 'checkBoxInputVar'
 checkBoxInput.setAttribute('type','checkbox')
 checkBoxInput.setAttribute('name','readOrNot')
 checkBoxInput.setAttribute('id','readOrNot')
 checkBoxContainer.appendChild(checkBoxInput)
+
+const checkBoxResult = document.querySelector(".checkBoxInputVar").value
+
 
 const buttonsContainer = document.createElement("div")
 buttonsContainer.className = 'buttonsContainer'
@@ -105,14 +114,21 @@ AddBookButton.addEventListener("click", ()=>{
     let arrTitle = titleInput.value
     let inputedAuthor = authorInput.value
     let inputedPageCount = pageCountInput.value
+    let uuid = self.crypto.randomUUID()
 
-    arrTitle = new Book(inputedBookTitle,inputedAuthor,inputedPageCount,true)
+    arrTitle = new Book(inputedBookTitle,inputedAuthor,inputedPageCount,checkBoxResult,uuid)
     books.push(arrTitle)
     console.log(books)
     return arrTitle
 }
 
 addBookToLibrary()
+for(let i = 0; i < books.length; i++){
+    for(let j = 0; j < i ; j++){
+        console.log(books[i][j])
+        console.log("Hello World")
+    }
+}
 titleContainerDiv.remove()
 count = 0
 })
@@ -129,19 +145,73 @@ addBookBtn.addEventListener("click",()=>{
 
 
 
-// function addBookToLibrary(title, author, pageCount, read){
-//     let inputedBookTitle = titleInput.textContent
-//     let arrTitle = titleInput.value
-//     let inputedAuthor = authorInput.value
-//     let inputedPageCount = pageCount.value
-//     let inputedReadStatus = read.value
+function arrayToCard(){
+    const bookDisplay = document.querySelector(".bookDisplay")
+    body.appendChild(bookDisplay)
 
-//     arrTitle = new Book(inputedBookTitle,inputedAuthor,inputedPageCount,inputedReadStatus)
-//     books.push(arrTitle)
-//     console.log(books)
+    const card = document.createElement("div")
+    card.className = 'card'
+    bookDisplay.appendChild(card)
 
-//     return arrTitle
-// }
+    const cardTitle = document.createElement("div")
+    cardTitle.className = 'cardTitle'
+    card.appendChild(cardTitle)
+
+    const defaultTitle = document.createElement("p")
+    defaultTitle.className = 'defaultTitle'
+    defaultTitle.textContent = 'Title:'
+    cardTitle.appendChild(defaultTitle)
+
+    const defaultTitleInput = document.createElement("p")
+    cardTitle.appendChild(defaultTitleInput)
+
+    const cardAuthor = document.createElement("div")
+    cardAuthor.className = 'cardAuthor'
+    card.appendChild(cardAuthor)
+
+    const defaultAuthor = document.createElement("p")
+    defaultAuthor.className ='defaultAuthor'
+    defaultAuthor.textContent = 'Author:'
+    cardAuthor.appendChild(defaultAuthor)
+
+    const defaultAuthorInput = document.createElement("p")
+    defaultAuthorInput.className = 'defaultAuthorInput'
+    cardAuthor.appendChild(defaultAuthorInput)
+
+    const cardPageCount = document.createElement("div")
+    cardPageCount.className = 'cardPageCount'
+    card.appendChild(cardPageCount)
+
+    const defaultPageCount = document.createElement("p")
+    defaultPageCount.textContent = 'Page Count:'
+    defaultPageCount.className = 'defaultPageCount'
+    cardPageCount.appendChild(defaultPageCount)
+
+    const defaultPageCountInput = document.createElement("p")
+    cardPageCount.appendChild(defaultPageCountInput)
+
+
+    const cardRead = document.createElement("div")
+    cardRead.className = 'cardPageCount'
+    card.appendChild(cardRead)
+
+    const defaultReadCount = document.createElement("p")
+    defaultReadCount.className= 'defaultReadCount'
+    defaultReadCount.textContent = 'Read:'
+    cardRead.appendChild(defaultReadCount)
+
+    const deletBtn = document.createElement("button")
+    deletBtn.textContent = 'Delete'
+    card.appendChild(deletBtn)
+
+
+}
 
 
 
+
+
+const test = document.querySelector(".test")
+test.addEventListener("click",()=>{
+    arrayToCard()
+})
