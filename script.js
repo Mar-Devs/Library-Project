@@ -181,6 +181,7 @@ AddBookButton.addEventListener("click", ()=>{
     } 
 
 
+
     const cardRead = document.createElement("div")
     cardRead.className = 'cardReadCount'
     card.appendChild(cardRead)
@@ -201,6 +202,29 @@ AddBookButton.addEventListener("click", ()=>{
         }
     } 
     cardRead.appendChild(inputedReadCount)
+
+    const checkBoxInput2 = document.createElement("button")
+    checkBoxInput2.className = 'checkBoxInput2'
+    checkBoxInput2.textContent = 'Toggle'
+    cardRead.appendChild(checkBoxInput2)
+
+    checkBoxInput2.addEventListener("click",()=>{
+        if(inputedReadCount.textContent === 'Yes'){
+            inputedReadCount.textContent = 'No'
+            arrTitle.read = false
+        }
+        else{
+            inputedReadCount.textContent = 'Yes'
+            for(let i = 0; i < books.length; i++){
+                arrTitle.read = true
+            }
+        }
+    })
+
+    const checkArray = document.querySelector(".checkArray")
+    checkArray.addEventListener("click", ()=>{
+        console.log(books)
+    })
 
 
     const deletBtn = document.createElement("button")
@@ -236,7 +260,6 @@ addBookBtn.addEventListener("click",()=>{
     addBookPopUp()
     }
 })
-
 
 
 
