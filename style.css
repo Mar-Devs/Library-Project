@@ -216,7 +216,16 @@ body{
     font-weight: 600;
 }
 
-.cardTitle, .cardAuthor, .cardPageCount, .cardReadCount{
+.cardTitle, .cardAuthor, .cardPageCount{
     display: flex;
     gap: 10px;
+}
+
+.cardReadCount{
+    display: flex;
+    gap: 10px;
+}
+
+.cardReadCount button{
+    align-self: center;
 }

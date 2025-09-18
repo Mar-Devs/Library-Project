@@ -106,26 +106,20 @@ buttonsContainer.appendChild(AddBookButton)
 AddBookButton.addEventListener("click", ()=>{
     function addBookToLibrary(){
     let inputedBookTitle = titleInput.value
-    let arrTitle = titleInput.value
     let inputedAuthor = authorInput.value
     let inputedPageCount = pageCountInput.value
     let inputedReadStatus = false
     if(checkBoxInput.checked){
 
         inputedReadStatus = true
-        console.log(inputedReadStatus)
     }
     else{
-        inputedPageCount = false
-        console.log(inputedReadStatus)
+        inputedReadStatus = false
     }
     let uuid = self.crypto.randomUUID()
 
     arrTitle = new Book(inputedBookTitle,inputedAuthor,inputedPageCount,inputedReadStatus,uuid)
     books.push(arrTitle)
-    for(let i = 0; i < books.length; i++){
-        console.log(books[i].title)
-    }
 
     function arrayToCard(){
     const bookDisplay = document.querySelector(".bookDisplay")
@@ -220,12 +214,6 @@ AddBookButton.addEventListener("click", ()=>{
             }
         }
     })
-
-    const checkArray = document.querySelector(".checkArray")
-    checkArray.addEventListener("click", ()=>{
-        console.log(books)
-    })
-
 
     const deletBtn = document.createElement("button")
     deletBtn.textContent = 'Delete'
